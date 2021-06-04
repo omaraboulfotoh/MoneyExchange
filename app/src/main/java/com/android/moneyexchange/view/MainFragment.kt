@@ -10,6 +10,7 @@ import androidx.navigation.fragment.NavHostFragment
 import dagger.hilt.android.AndroidEntryPoint
 import com.android.moneyexchange.R
 import com.android.moneyexchange.databinding.FragmentMainBinding
+import com.android.moneyexchange.extention.observe
 import com.android.moneyexchange.view.adapter.CurrencyAdapter
 import com.android.moneyexchange.viewmodel.CurrencyViewModel
 
@@ -41,9 +42,18 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.rvCurrencies.adapter = adapter
-
+        bindViewModel()
     }
 
+    private fun bindViewModel() = with(viewModel) {
+        observe(loadCurrencies()) {
+            if (it.size > 0) {
+                adapter.submitList(it)
+            } else {
+
+            }
+        }
+    }
 
     override fun onDestroyView() {
         _binding = null

@@ -8,7 +8,7 @@ data class Currency(
     val name: String,
     val sign: String,
     val flag: Int,
-    val rate: Double = 0.0
+    var rate: Double? = 0.0
 ) :
     Serializable {
     fun getRateString(): String {

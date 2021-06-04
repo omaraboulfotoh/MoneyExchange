@@ -4,7 +4,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.android.moneyexchange.R
-import com.android.moneyexchange.app.MEDIA_URL
 import com.squareup.picasso.Picasso
 
 
