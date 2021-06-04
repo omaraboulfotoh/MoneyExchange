@@ -12,7 +12,6 @@
         android:label="MainFragment"
         tools:layout="@layout/fragment_main">
 
-
     </fragment>
 
 

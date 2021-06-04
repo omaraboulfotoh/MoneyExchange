@@ -1,5 +1,6 @@
 package com.android.moneyexchange.network
 
+import com.android.moneyexchange.network.response.CurrenciesListResponse
 import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -12,6 +13,11 @@ class FormRemoteDataSource(
     override val gson: Gson,
     override val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : SafeNetworkRequestCaller {
+
+
+    suspend fun getCurrencies(): Result<CurrenciesListResponse> {
+        return request { service.getCurrencies() }
+    }
 
 
     companion object {
