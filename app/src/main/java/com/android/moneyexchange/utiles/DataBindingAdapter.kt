@@ -8,15 +8,12 @@ import com.android.moneyexchange.app.MEDIA_URL
 import com.squareup.picasso.Picasso
 
 
-@BindingAdapter("imageUrl")
-fun ImageView.loadImage(imageUrl: String) {
-    if (imageUrl.isNotEmpty())
-        Picasso.get()
-            .load(MEDIA_URL + imageUrl)
-            .placeholder(R.mipmap.ic_launcher)
-            .into(this)
-    else
-        this.setImageResource(R.mipmap.ic_launcher)
+@BindingAdapter("imageSrc")
+fun ImageView.loadImage(imageSrc: Int) {
+    Picasso.get()
+        .load(imageSrc)
+        .placeholder(R.mipmap.ic_launcher)
+        .into(this)
 }
 
 @BindingAdapter("android:setTitle")
