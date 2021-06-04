@@ -1,22 +1,40 @@
 package com.android.moneyexchange.di
 
-import android.content.Context
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import javax.inject.Singleton
-import com.android.moneyexchange.di.AppCoroutineDispatchers
 
 @InstallIn(SingletonComponent::class)
 @Module(
     includes = [
         NetworkModule::class,
-        RepositoryModule::class
+        RepositoryModule::class,
+        UseCasesModule::class
     ]
 )
 object AppModule {
+
+    @Singleton
+    @Provides
+    fun provideCoroutineDispatchers() = AppCoroutineDispatchers(
+        io = Dispatchers.IO,
+        computation = Dispatchers.Default,
+        main = Dispatchers.Main
+    )
+
+    @Provides
+    @IODispatcher
+    fun providesIODispatcher(dispatchers: AppCoroutineDispatchers): CoroutineDispatcher {
+        return dispatchers.io
+    }
+
+    @Provides
+    @MainDispatcher
+    fun providesMainDispatcher(dispatchers: AppCoroutineDispatchers): CoroutineDispatcher {
+        return dispatchers.main
+    }
 }

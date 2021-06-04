@@ -1,5 +1,6 @@
 package com.android.moneyexchange.network
 
+import com.android.moneyexchange.app.API_KEY
 import com.android.moneyexchange.network.response.CurrenciesListResponse
 import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineDispatcher
@@ -16,7 +17,7 @@ class FormRemoteDataSource(
 
 
     suspend fun getCurrencies(): Result<CurrenciesListResponse> {
-        return request { service.getCurrencies() }
+        return request { service.getCurrencies(API_KEY) }
     }
 
 

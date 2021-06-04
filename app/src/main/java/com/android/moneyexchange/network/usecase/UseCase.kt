@@ -1,5 +1,6 @@
 package com.android.moneyexchange.network.usecase
 
+import com.android.moneyexchange.network.Result
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
