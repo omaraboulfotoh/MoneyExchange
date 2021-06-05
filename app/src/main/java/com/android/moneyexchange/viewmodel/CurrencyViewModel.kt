@@ -2,6 +2,7 @@ package com.android.moneyexchange.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
+import com.android.moneyexchange.app.DEFAULT_CURRENCY
 import com.android.moneyexchange.di.IODispatcher
 import com.android.moneyexchange.models.CURRENCIES
 import com.android.moneyexchange.models.Currency
@@ -24,7 +25,7 @@ class CurrencyViewModel @Inject constructor(
             val homeList = mutableListOf<Currency>()
             result.data?.let {
                 homeList.addAll(CURRENCIES.filter { currency ->
-                    it.rates[currency.code] != null
+                    (currency.code != DEFAULT_CURRENCY && it.rates[currency.code] != null)
                 })
                 homeList.forEach { currency -> currency.rate = it.rates[currency.code] }
             }
