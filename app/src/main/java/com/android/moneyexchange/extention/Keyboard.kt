@@ -2,10 +2,22 @@ package com.android.moneyexchange.extention
 
 import android.app.Activity
 import android.content.Context
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import androidx.annotation.CheckResult
 import androidx.core.content.ContextCompat
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.channels.ReceiveChannel
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.selects.whileSelect
+import java.util.concurrent.Flow
+import java.util.concurrent.TimeUnit
 
 /**
  * Hides the soft input window.
@@ -43,5 +55,3 @@ fun Activity.hideInputType(view: View) {
         false
     }
 }
-
-

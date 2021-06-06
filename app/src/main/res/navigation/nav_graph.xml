@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.android.moneyexchange.view.MainFragment"
+        android:name="com.android.moneyexchange.view.fragment.MainFragment"
         android:label="MainFragment"
         tools:layout="@layout/fragment_main">
 
